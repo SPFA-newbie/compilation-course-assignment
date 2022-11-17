@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\lexical">
+      <UniqueIdentifier>{0df8f145-09ad-4928-a57c-d256d5bedcd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\gramma">
+      <UniqueIdentifier>{803ce8f2-d811-4d08-a47c-5e9681e7bf83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\lexical">
+      <UniqueIdentifier>{abed6d9c-6297-46bd-bc6b-a882ae999669}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\gramma">
+      <UniqueIdentifier>{6d03fc6b-2548-4e1c-98f8-85c7f142de97}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="debugger.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="exceptions.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lexic_list.h">
+      <Filter>头文件\lexical</Filter>
+    </ClInclude>
+    <ClInclude Include="lexical_analyzer.h">
+      <Filter>头文件\lexical</Filter>
+    </ClInclude>
+    <ClInclude Include="match_map.h">
+      <Filter>头文件\lexical</Filter>
+    </ClInclude>
+    <ClInclude Include="program_struct.h">
+      <Filter>头文件\gramma</Filter>
+    </ClInclude>
+    <ClInclude Include="sentence.h">
+      <Filter>头文件\gramma</Filter>
+    </ClInclude>
+    <ClInclude Include="gramma_analyzer.h">
+      <Filter>头文件\gramma</Filter>
+    </ClInclude>
+    <ClInclude Include="function_and_value.h">
+      <Filter>头文件\gramma</Filter>
+    </ClInclude>
+    <ClInclude Include="expression.h">
+      <Filter>头文件\gramma</Filter>
+    </ClInclude>
+    <ClInclude Include="condition.h">
+      <Filter>头文件\gramma</Filter>
+    </ClInclude>
+    <ClInclude Include="gramma_tool.h">
+      <Filter>头文件\gramma</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="debugger.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="match_map_build.cpp">
+      <Filter>源文件\lexical</Filter>
+    </ClCompile>
+    <ClCompile Include="lexical_matching.cpp">
+      <Filter>源文件\lexical</Filter>
+    </ClCompile>
+    <ClCompile Include="lexical_analyzer.cpp">
+      <Filter>源文件\lexical</Filter>
+    </ClCompile>
+    <ClCompile Include="define_gramma.cpp">
+      <Filter>源文件\gramma</Filter>
+    </ClCompile>
+    <ClCompile Include="gramma_tool.cpp">
+      <Filter>源文件\gramma</Filter>
+    </ClCompile>
+    <ClCompile Include="sentence_gramma.cpp">
+      <Filter>源文件\gramma</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

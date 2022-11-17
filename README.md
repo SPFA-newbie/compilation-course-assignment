@@ -1,2 +1,2 @@
-# compilation-course-assignment
-编译原理课程实验
+# 编译原理课程实验
+自用，不具备实用价值
