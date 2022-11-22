@@ -89,5 +89,8 @@
     <ClCompile Include="sentence_gramma.cpp">
       <Filter>源文件\gramma</Filter>
     </ClCompile>
+    <ClCompile Include="expression_gramma.cpp">
+      <Filter>源文件\gramma</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

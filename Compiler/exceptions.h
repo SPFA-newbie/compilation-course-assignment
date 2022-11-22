@@ -24,8 +24,12 @@ namespace exceptions
 	static const char* CHANGE_CONST = "改变常量的值";
 	//-- while和if语句
 	static const char* MISSING_CONDITION = "缺少条件或条件不在括号中";
+	static const char* MISSING_THEN = "缺少then关键字";
 	//-- for语句
 	static const char* MISSING_COUNTER = "缺少计数器或不在括号中";
+	//-- 函数调用
+	static const char* TOO_MANY_PARAMENT = "参数过多";
+	static const char* MISSING_PARAMENT = "缺少参数";
 }
 
 #endif

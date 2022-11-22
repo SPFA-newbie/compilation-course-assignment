@@ -53,8 +53,10 @@ class ForSentence : public Sentence
 class IfSentence : public Sentence
 {
 	public:
+		bool hasElse;
 		Condition* condition;
 		Sentence* body;
+		Sentence* elseBody;
 };
 
 class CallSentence : public Sentence

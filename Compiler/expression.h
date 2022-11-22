@@ -36,7 +36,7 @@ class RecursionExpr : public Expression
 class FunctionExpr : public Expression
 {
 	public:
-		CallSentence* call;	
+		CallSentence* call;
 };
 
 class CalcExpr : public Expression

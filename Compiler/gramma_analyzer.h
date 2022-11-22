@@ -29,7 +29,7 @@ ReturnSentence* returnBuilder(DefPara, BlockSentence* father,Program* root);
 
 Expression* expressionBuilder(DefPara, BlockSentence* father, Program* root);
 
-ValueExpr* valueExprBuilder(DefPara, int end, BlockSentence* father);
+ValueExpr* valueExprBuilder(DefPara, int end, BlockSentence* father, Program* root);
 RecursionExpr* recursionExprBuilder(DefPara, int end, BlockSentence* father, Program* root);
 FunctionExpr* functionExprBuilder(DefPara, int end, BlockSentence* father, Program* root);
 CalcExpr* calcExprBuilder(DefPara, int end, BlockSentence* father, Program* root);

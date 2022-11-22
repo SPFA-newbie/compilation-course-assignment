@@ -164,7 +164,86 @@ IfSentence* ifBuilder(DefPara)
 	Control* ifCtrl = getControl(target[pos]);
 	if (ifCtrl == NULL)throw exceptions::ISOLATED_SYMBOL;
 	if (ifCtrl->word != IF)throw exceptions::ISOLATED_SYMBOL;
-	//获取
+	//获取条件
+	pos++;
+	ret->condition = conditionBuilder(target, pos, father, root);
+	//检查then关键字
+	Control* thenCtrl = getControl(target[pos]);
+	if (thenCtrl == NULL)throw exceptions::MISSING_THEN;
+	if (thenCtrl->word != THEN)throw exceptions::ISOLATED_SYMBOL;
+	//获取执行语句
+	pos++;
+	ret->body = sentenceBuilder(target, pos, father, root);
+	//else处理
+	Control* elseCtrl = getControl(target[pos]);
+	if (elseCtrl != NULL && elseCtrl->word == ELSE)
+	{
+		ret->hasElse = true;
+		//获取else执行语句
+		pos++;
+		ret->elseBody = sentenceBuilder(target, pos, father, root);
+	}else
+	{
+		ret->hasElse = false;
+		ret->elseBody = NULL;
+	}
+	return ret;
+}
+
+CallSentence* callBuilder(DefPara, bool isSentence)
+{
+	CallSentence* ret = new CallSentence;
+	ret->type = CALL_S;
+	ret->father = father;
+	//获取欲调用的函数名
+	CustomName* name = getCustomName(target[pos]);
+	if (name == NULL)throw exceptions::UNDEFINED_FUNCTION;
+	ret->use = getFunction(name->name, root);
+	if (ret->use == NULL)throw exceptions::UNDEFINED_FUNCTION;
+	//匹配左括号
+	pos++;
+	if (checkSymbol(target[pos], LEFT_PARE) == false)throw exceptions::MISSING_PARAMENT;
+	//获取传入参数
+	pos++;
+	int paraNum = -1;
+	while (checkSymbol(target[pos], RIGHT_PARE) == false)
+	{
+		//获取参数
+		paraNum++;
+		if (paraNum >= ret->use->paraType.size())throw exceptions::TOO_MANY_PARAMENT;
+		ret->para.push_back(expressionBuilder(target, pos, father, root));
+		//检查逗号
+		if (checkSymbol(target[pos], COMMA) == true)pos++; else
+		if (checkSymbol(target[pos], RIGHT_PARE) == false)throw exceptions::ISOLATED_SYMBOL;
+	}
+	//检查参数数量
+	if (paraNum + 1 != ret->use->paraType.size())throw exceptions::MISSING_PARAMENT;
+	//检查右括号
+	if (checkSymbol(target[pos], RIGHT_PARE) == false)throw exceptions::UNCLOSED_BRACKET;
+	//检查分号
+	pos++;
+	if (isSentence == true)
+	{
+		if (checkSymbol(target[pos], END) == false)throw exceptions::MISSING_SENICOLON;
+		pos++;
+	}
+	return ret;
+}
+
+ReturnSentence* returnBuilder(DefPara)
+{
+	ReturnSentence* ret=new ReturnSentence;
+	ret->type = RETURN_S;
+	ret->father = father;
+	//检查return关键字
+	Control* ctrl = getControl(target[pos]);
+	if (ctrl == NULL || ctrl->word != RETURN)throw exceptions::ISOLATED_SYMBOL;
+	//获取返回表达式
+	pos++;
+	ret->ret = expressionBuilder(target, pos, father, root);
+	//检查分号
+	if (checkSymbol(target[pos], END) == false)throw exceptions::MISSING_SENICOLON;
+	return ret;
 }
 
 #undef DefPara
