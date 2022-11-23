@@ -30,6 +30,8 @@ namespace exceptions
 	//-- 函数调用
 	static const char* TOO_MANY_PARAMENT = "参数过多";
 	static const char* MISSING_PARAMENT = "缺少参数";
+	//-- 表达式
+	static const char* ILLEGAL_EXPRESSION_HEAD = "非法的(子)表达式头部";
 }
 
 #endif
