@@ -31,7 +31,10 @@ namespace exceptions
 	static const char* TOO_MANY_PARAMENT = "参数过多";
 	static const char* MISSING_PARAMENT = "缺少参数";
 	//-- 表达式
-	static const char* ILLEGAL_EXPRESSION_HEAD = "非法的(子)表达式头部";
+	static const char* ILLEGAL_EXPRESSION_ELEMENT = "非法的(子)表达式元素";
+	static const char* ILLEGAL_OR_MISSING_OPERATOR = "非法的运算符或缺少运算符";
+	static const char* MISSING_BRACKET = "表达式缺少必要的括号";
+	static const char* EXPRESSION_UNNORMALIZED = "表达式构造失败：无法规范化";
 }
 
 #endif

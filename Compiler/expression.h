@@ -10,7 +10,7 @@ class CallSentence;//前向声明
 
 enum ExpressionType
 {
-	VALUE, RECUR_EXPR, FUNCTION, CALCULATION
+	VALUE, TEMP_CONST, RECUR_EXPR, FUNCTION, CALCULATION
 }; 
 
 class Expression
@@ -23,6 +23,13 @@ class ValueExpr : public Expression
 {
 	public:
 		ValueDefine* link;
+};
+
+class TempConstExpr : public Expression
+{
+	public:
+		ValueType valueType;
+		void* value;
 };
 
 class RecursionExpr : public Expression
@@ -43,7 +50,7 @@ class CalcExpr : public Expression
 {
 	public:
 		std::vector<Expression*> sub;
-		std::vector<Symbol> symbol;
+		std::vector<Symbol> symbols;
 };
 
 #endif
