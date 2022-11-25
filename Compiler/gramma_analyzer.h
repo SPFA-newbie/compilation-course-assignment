@@ -3,7 +3,6 @@
 #define GRAMMA_ANALYZER
 
 #include"sentence.h"
-#include"condition.h"
 #include"expression.h"
 #include"program_struct.h"
 #include"function_and_value.h"
@@ -29,13 +28,6 @@ ReturnSentence* returnBuilder(DefPara, BlockSentence* father,Program* root);
 
 Expression* expressionBuilder(DefPara, BlockSentence* father, Program* root);
 
-//-----------------------------------------------------------------------------
-
-Condition* conditionBuilder(DefPara, BlockSentence* father, Program* root);
-
-RecursionCondit* recurConditBuilder(DefPara, int end, BlockSentence* father, Program* root);
-CompareCondit* compareConditBuilder(DefPara, int end, BlockSentence* father, Program* root);
-LinkCondit* linkConditBuilder(DefPara, int end, BlockSentence* father, Program* root);
 #undef DefPara
 
 #endif

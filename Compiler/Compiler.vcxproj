@@ -127,7 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="condition.h" />
     <ClInclude Include="debugger.h" />
     <ClInclude Include="exceptions.h" />
     <ClInclude Include="expression.h" />

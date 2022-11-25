@@ -23,7 +23,6 @@ Program* programBuilder(DefPara)
 		else if (target[pos]->type == SYMBOL && ((SymbolLexic*)target[pos])->symbol == LEFT_BRA)
 			ret->main = blockBuilder(target, pos, ret->virtualBlock, ret);
 		else throw exceptions::ISOLATED_SYMBOL;
-		pos++;
 	}
 	return ret;
 }
@@ -58,7 +57,7 @@ void functionBuilder(DefPara, Program* root)
 		//创建参数
 		ValueDefine* value = createParaValue(false, paraType->valType);
 		value->value = NULL;
-		fun->virtualBlock->values[funName->name] = value;
+		fun->virtualBlock->values[paraName->name] = value;
 		//保存参数类型
 		fun->paraType.push_back(paraType->valType);
 		//检查符号
@@ -84,7 +83,7 @@ void valueBuilder(DefPara, BlockSentence* father, Program* root)
 	//确定类型
 	pos++;
 	ValueTypeDefine* type = getTypeDefine(target[pos]);
-	if (type == NULL)throw exceptions::ISOLATED_SYMBOL;
+	if (type == NULL)throw exceptions::MISSING_TYPE_DEFINE;
 	value->type = type->valType;
 	//确定名称
 	pos++;

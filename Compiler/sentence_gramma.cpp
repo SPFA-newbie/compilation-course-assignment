@@ -118,7 +118,7 @@ WhileSentence* whileBuilder(DefPara)
 	if (checkSymbol(target[pos], LEFT_PARE) == false)throw exceptions::MISSING_CONDITION;
 	//获取条件
 	pos++;
-	ret->condition = conditionBuilder(target, pos, father, root);
+	ret->condition = expressionBuilder(target, pos, father, root);
 	//匹配右小括号
 	if (checkSymbol(target[pos], RIGHT_PARE) == false)throw exceptions::UNCLOSED_BRACKET;
 	//获取循环体
@@ -141,7 +141,7 @@ ForSentence* forBuilder(DefPara)
 	if (checkSymbol(target[pos], LEFT_PARE) != true)throw exceptions::MISSING_COUNTER;
 	//获取终止条件
 	pos++;
-	ret->condition = conditionBuilder(target, pos, father, root);
+	ret->condition = expressionBuilder(target, pos, father, root);
 	//匹配分号
 	if (checkSymbol(target[pos], END) == false)throw exceptions::MISSING_SENICOLON;
 	//获取计数器赋值语句
@@ -166,7 +166,7 @@ IfSentence* ifBuilder(DefPara)
 	if (ifCtrl->word != IF)throw exceptions::ISOLATED_SYMBOL;
 	//获取条件
 	pos++;
-	ret->condition = conditionBuilder(target, pos, father, root);
+	ret->condition = expressionBuilder(target, pos, father, root);
 	//检查then关键字
 	Control* thenCtrl = getControl(target[pos]);
 	if (thenCtrl == NULL)throw exceptions::MISSING_THEN;
@@ -243,6 +243,7 @@ ReturnSentence* returnBuilder(DefPara)
 	ret->ret = expressionBuilder(target, pos, father, root);
 	//检查分号
 	if (checkSymbol(target[pos], END) == false)throw exceptions::MISSING_SENICOLON;
+	pos++;
 	return ret;
 }
 

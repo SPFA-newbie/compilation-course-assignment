@@ -5,7 +5,6 @@
 #include<map>
 #include<string>
 #include<vector> 
-#include"condition.h"
 #include"expression.h" 
 #include"function_and_value.h"
 
@@ -38,14 +37,14 @@ class AssignSentence : public Sentence
 class WhileSentence : public Sentence
 {
 	public:
-		Condition* condition;
+		Expression* condition;
 		Sentence* body;
 };
 
 class ForSentence : public Sentence
 {
 	public:
-		Condition* condition;
+		Expression* condition;
 		AssignSentence* assign;
 		Sentence* body;
 };
@@ -54,7 +53,7 @@ class IfSentence : public Sentence
 {
 	public:
 		bool hasElse;
-		Condition* condition;
+		Expression* condition;
 		Sentence* body;
 		Sentence* elseBody;
 };

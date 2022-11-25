@@ -4,16 +4,32 @@
 #include<iostream>
 
 #include"debugger.h"
+#include"exceptions.h"
+
 #include"match_map.h"
 #include"lexic_list.h"
-#include"exceptions.h"
 #include"lexical_analyzer.h"
+
+#include"program_struct.h"
+#include"gramma_analyzer.h"
 using namespace std;
 
+//Debug for gramma_analyzer
 
+int main()
+{
+	ifstream fin;
+	string name = "E:\\大学课程\\大三上_编译原理\\实验\\Compiler\\Test.txt";//Test document
+	fin.open(name);
+	vector<Lexic*> lexicalList = lexicalAnalyzer(fin);
+
+	int pos = 0;
+	Program* program = programBuilder(lexicalList, pos);
+}
+/**/
 
 //Debug for lexical analyzer
-
+/*
 int main()
 {
 	ifstream fin;

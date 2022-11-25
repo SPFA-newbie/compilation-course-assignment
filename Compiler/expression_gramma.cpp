@@ -12,7 +12,7 @@ using namespace std;
 // return -2 = 常量值
 // return -1 = 非表达式符号
 // return 0 = 左小括号
-// return 1-6 = 运算符优先级
+// return 1-10 = 运算符优先级
 int expressionLexicCheck(Lexic* tar)
 {
 	if (tar->type == CUS_NAME)return -3;
@@ -30,9 +30,17 @@ int expressionLexicCheck(Lexic* tar)
 		case MOD:return 2;
 		case ADD:
 		case SUB:return 3;
-		case AND:return 4;
-		case XOR:return 5;
-		case OR: return 6;
+		case LT :
+		case GT :
+		case LE :
+		case GE :return 4;
+		case EQ :
+		case NE :return 5;
+		case AND:return 6;
+		case XOR:return 7;
+		case OR: return 8;
+		case LOG_AND:return 9;
+		case LOG_OR:return 10;
 	}
 	return -1;
 }
@@ -51,7 +59,7 @@ CalcExpr* calcExprLayer(vector<Expression*>& sub, vector<SymbolLexic*>& symbols)
 //构造同优先级表达式
 // - 符号迭代器为左闭右开区间
 // - 元素迭代器为左闭右开区间，但是右端点会被替换
-void calcExprBuilder
+pair<VecIt(Expression*),VecIt(SymbolLexic*)> calcExprBuilder
 	(vector<Expression*>& sub, vector<SymbolLexic*>& symbols,
 	VecIt(Expression*) exprFirst, VecIt(Expression*) exprEnd,
 	VecIt(SymbolLexic*) symbolFirst, VecIt(SymbolLexic*) symbolEnd);
@@ -187,7 +195,7 @@ FunctionExpr* functionExprBuilder(DefPara)
 CalcExpr* calcExprLayer(vector<Expression*>& sub, vector<SymbolLexic*>& symbols)
 {
 	//对除0、1外的所有优先级进行分层
-	for (int i = 2; i <= 6; i++)
+	for (int i = 2; i <= 10; i++)
 	{
 		VecIt(Expression*) exprIt = sub.begin();
 		VecIt(SymbolLexic*) symbolIt = symbols.begin();
@@ -211,7 +219,10 @@ CalcExpr* calcExprLayer(vector<Expression*>& sub, vector<SymbolLexic*>& symbols)
 					exprIt++;
 				}
 				//构造子表达式
-				calcExprBuilder(sub, symbols, exprBegin, exprIt, symbolBegin, symbolIt);
+				pair<VecIt(Expression*), VecIt(SymbolLexic*)> newIt=
+					calcExprBuilder(sub, symbols, exprBegin, exprIt, symbolBegin, symbolIt);
+				exprIt = newIt.first;
+				symbolIt = newIt.second;
 				//此时两个迭代器均到达了预定的位置（子表达式尾部之后）
 			}
 		}
@@ -221,7 +232,7 @@ CalcExpr* calcExprLayer(vector<Expression*>& sub, vector<SymbolLexic*>& symbols)
 	return (CalcExpr*)sub[0];
 }
 
-void calcExprBuilder
+pair<VecIt(Expression*), VecIt(SymbolLexic*)> calcExprBuilder
 	(vector<Expression*>& sub, vector<SymbolLexic*>& symbols,
 	VecIt(Expression*) exprFirst, VecIt(Expression*) exprEnd,
 	VecIt(SymbolLexic*) symbolFirst, VecIt(SymbolLexic*) symbolEnd)
@@ -238,9 +249,13 @@ void calcExprBuilder
 	expr->sub.push_back(*exprEnd);
 
 	//清理合并
-	sub.erase(exprFirst, exprEnd);
-	symbols.erase(symbolFirst, symbolEnd);
+	exprEnd=sub.erase(exprFirst, exprEnd);
+	symbolEnd=symbols.erase(symbolFirst, symbolEnd);
 	*exprEnd = expr;
+	pair<VecIt(Expression*), VecIt(SymbolLexic*)> ret;
+	ret.first = exprEnd;
+	ret.second = symbolEnd;
+	return ret;
 }
 
 #undef VecIt(T)

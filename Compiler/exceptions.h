@@ -20,6 +20,8 @@ namespace exceptions
 	static const char* DUPLICATE_FUNCTION = "重定义的函数名";
 	static const char* DUPLICATE_VALUE = "重定义的常量/变量名";
 	static const char* UNINIT_VALUE = "未初始化的常量/变量";
+	//-- 常量变量定义
+	static const char* MISSING_TYPE_DEFINE = "缺少类型定义";
 	//-- 赋值
 	static const char* CHANGE_CONST = "改变常量的值";
 	//-- while和if语句
