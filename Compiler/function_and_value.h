@@ -11,17 +11,21 @@ class Expression;//前向声明
 struct ValueDefine
 {
 	long long tag;
+	int offset;
+	bool isGlobal;
 	bool isConst;
 	ValueType type;
-	Expression* value;
+	void* value;
 };
 
 struct FunctionDefine
 {
 	long long tag;
+	std::string headLable;
 	ValueType returnType;
 	std::vector<ValueType> paraType;
-	BlockSentence* virtualBlock; 
+	std::vector<ValueDefine*> paraList;
+	BlockSentence* virtualBlock;
 	BlockSentence* block;
 };
 

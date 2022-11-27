@@ -69,7 +69,7 @@ BlockSentence* blockBuilder(DefPara)
 		//常量变量定义
 		Control* ctrl = getControl(target[pos]);
 		if (ctrl != NULL && (ctrl->word == VAR || ctrl->word == CONST))
-			valueBuilder(target, pos, ret, root);
+			valueBuilder(target, pos, ret, root, false);
 		//新的语句
 		else if (checkSymbol(target[pos], RIGHT_BRA) == false)
 			ret->children.push_back(sentenceBuilder(target, pos, ret, root));

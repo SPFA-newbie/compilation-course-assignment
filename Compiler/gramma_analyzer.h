@@ -11,7 +11,7 @@
 
 Program* programBuilder(DefPara);
 void functionBuilder(DefPara, Program* root);
-void valueBuilder(DefPara, BlockSentence* father, Program* root);
+void valueBuilder(DefPara, BlockSentence* father, Program* root, bool isGlobal);
 //----------------------------------------------------------------------------
 
 Sentence* sentenceBuilder(DefPara, BlockSentence* father, Program* root);

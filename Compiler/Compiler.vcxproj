@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="asm_struct.h" />
     <ClInclude Include="debugger.h" />
     <ClInclude Include="exceptions.h" />
     <ClInclude Include="expression.h" />
@@ -138,17 +139,23 @@
     <ClInclude Include="match_map.h" />
     <ClInclude Include="program_struct.h" />
     <ClInclude Include="sentence.h" />
+    <ClInclude Include="translater.h" />
+    <ClInclude Include="translate_tool.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debugger.cpp" />
     <ClCompile Include="define_gramma.cpp" />
     <ClCompile Include="expression_gramma.cpp" />
+    <ClCompile Include="function_translater.cpp" />
     <ClCompile Include="gramma_tool.cpp" />
     <ClCompile Include="lexical_analyzer.cpp" />
     <ClCompile Include="lexical_matching.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="match_map_build.cpp" />
+    <ClCompile Include="program_translater.cpp" />
     <ClCompile Include="sentence_gramma.cpp" />
+    <ClCompile Include="sentence_translater.cpp" />
+    <ClCompile Include="translate_tool.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -25,6 +25,12 @@
     <Filter Include="源文件\gramma">
       <UniqueIdentifier>{6d03fc6b-2548-4e1c-98f8-85c7f142de97}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\translate">
+      <UniqueIdentifier>{4c84909b-aa3f-48ab-af5d-aed6487451c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\translate">
+      <UniqueIdentifier>{b45b5ba0-e721-4530-a412-acfcff317957}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debugger.h">
@@ -60,6 +66,15 @@
     <ClInclude Include="gramma_tool.h">
       <Filter>头文件\gramma</Filter>
     </ClInclude>
+    <ClInclude Include="asm_struct.h">
+      <Filter>头文件\translate</Filter>
+    </ClInclude>
+    <ClInclude Include="translater.h">
+      <Filter>头文件\translate</Filter>
+    </ClInclude>
+    <ClInclude Include="translate_tool.h">
+      <Filter>头文件\translate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debugger.cpp">
@@ -88,6 +103,18 @@
     </ClCompile>
     <ClCompile Include="expression_gramma.cpp">
       <Filter>源文件\gramma</Filter>
+    </ClCompile>
+    <ClCompile Include="program_translater.cpp">
+      <Filter>源文件\translate</Filter>
+    </ClCompile>
+    <ClCompile Include="function_translater.cpp">
+      <Filter>源文件\translate</Filter>
+    </ClCompile>
+    <ClCompile Include="translate_tool.cpp">
+      <Filter>源文件\translate</Filter>
+    </ClCompile>
+    <ClCompile Include="sentence_translater.cpp">
+      <Filter>源文件\translate</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

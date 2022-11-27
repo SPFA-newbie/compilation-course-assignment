@@ -19,7 +19,7 @@ Program* programBuilder(DefPara)
 		if (target[pos]->type == TYPE_DEF)//定义函数
 			functionBuilder(target, pos, ret);
 		else if (target[pos]->type == CTRL_WORD && (((Control*)target[pos])->word == VAR || ((Control*)target[pos])->word == CONST))//定义值
-			valueBuilder(target, pos, ret->virtualBlock, ret);
+			valueBuilder(target, pos, ret->virtualBlock, ret, true);
 		else if (target[pos]->type == SYMBOL && ((SymbolLexic*)target[pos])->symbol == LEFT_BRA)
 			ret->main = blockBuilder(target, pos, ret->virtualBlock, ret);
 		else throw exceptions::ISOLATED_SYMBOL;
@@ -60,6 +60,8 @@ void functionBuilder(DefPara, Program* root)
 		fun->virtualBlock->values[paraName->name] = value;
 		//保存参数类型
 		fun->paraType.push_back(paraType->valType);
+		//保存参数指针
+		fun->paraList.push_back(value);
 		//检查符号
 		pos++;
 		if (checkSymbol(target[pos], COMMA) == true)pos++; else
@@ -74,9 +76,10 @@ void functionBuilder(DefPara, Program* root)
 	return;
 }
 
-void valueBuilder(DefPara, BlockSentence* father, Program* root)
+void valueBuilder(DefPara, BlockSentence* father, Program* root, bool isGlobal)
 {
 	ValueDefine* value = new ValueDefine;
+	value->isGlobal = isGlobal;
 	//确定变量常量
 	if (getControl(target[pos])->word == VAR)value->isConst = false;
 		else value->isConst = true;
@@ -96,7 +99,8 @@ void valueBuilder(DefPara, BlockSentence* father, Program* root)
 	if (checkSymbol(target[pos], ASSIGN) == false)throw exceptions::UNINIT_VALUE;
 	//获取赋值
 	pos++;
-	value->value = expressionBuilder(target, pos, father, root);
+	if (target[pos]->type != CONST_VAL)throw exceptions::ILLEGAL_INIT_VALUE;
+	value->value = getConstValue(target[pos])->value;
 	//分号检测
 	if (checkSymbol(target[pos], END) == false)throw exceptions::MISSING_SENICOLON;
 	pos++;

@@ -22,6 +22,7 @@ namespace exceptions
 	static const char* UNINIT_VALUE = "未初始化的常量/变量";
 	//-- 常量变量定义
 	static const char* MISSING_TYPE_DEFINE = "缺少类型定义";
+	static const char* ILLEGAL_INIT_VALUE = "非法的初始值或缺少初始值";
 	//-- 赋值
 	static const char* CHANGE_CONST = "改变常量的值";
 	//-- while和if语句
