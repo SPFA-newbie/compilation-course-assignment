@@ -13,11 +13,6 @@ void programTrans(DefPara, Program* target);
 void functionTrans(DefPara, FunctionDefine* target);
 
 void expressionTrans(DefPara, Expression* target);
-void calcExprTrans(DefPara, CalcExpr* target);
-void valueExprTrans(DefPara, ValueExpr* target);
-void tempConstExprTrans(DefPara, TempConstExpr* target);
-void recursionExprTrans(DefPara, RecursionExpr* target);
-void functionExprTrans(DefPara, FunctionExpr* target);
 
 void sentenceTrans(DefPara, Sentence* target);
 

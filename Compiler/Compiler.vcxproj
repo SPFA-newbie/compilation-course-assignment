@@ -146,6 +146,7 @@
     <ClCompile Include="debugger.cpp" />
     <ClCompile Include="define_gramma.cpp" />
     <ClCompile Include="expression_gramma.cpp" />
+    <ClCompile Include="expression_translater.cpp" />
     <ClCompile Include="function_translater.cpp" />
     <ClCompile Include="gramma_tool.cpp" />
     <ClCompile Include="lexical_analyzer.cpp" />

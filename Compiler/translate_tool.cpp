@@ -16,7 +16,7 @@ string offsetMake(string tar, int offset)
 	else if (offset < 0)
 	{
 		ret.append("+");
-		ret.append(to_string(offset));
+		ret.append(to_string(-offset));
 	}
 	ret.append("]");
 	return ret;

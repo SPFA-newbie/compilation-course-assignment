@@ -12,53 +12,44 @@
 
 #include"program_struct.h"
 #include"gramma_analyzer.h"
+
+#include"asm_struct.h"
+#include"translater.h"
 using namespace std;
 
-//Debug for gramma_analyzer
-
-int main()
+int main(int argc, char** argv)
 {
-	ifstream fin;
-	string name = "E:\\大学课程\\大三上_编译原理\\实验\\Compiler\\Test.txt";//Test document
-	fin.open(name);
-	vector<Lexic*> lexicalList = lexicalAnalyzer(fin);
-
-	int pos = 0;
-	Program* program = programBuilder(lexicalList, pos);
-}
-/**/
-
-//Debug for lexical analyzer
-/*
-int main()
-{
-	ifstream fin;
-	string name="E:\\大学课程\\大三上_编译原理\\实验\\Test.txt";//Test document
-	fin.open(name);
-	vector<Lexic*> res=lexicalAnalyzer(fin);
-	for(vector<Lexic*>::iterator it=res.begin();it!=res.end();it++)
+	if (argc != 3)
 	{
-		LexicOut(*it);
+		cout << "未提供有效的参数" << endl;
+		return -1;
 	}
+	ifstream fin;
+	ofstream fout;
+	fin.open(argv[1]);
+	fout.open(argv[2]);
+
+	try 
+	{
+		//词法分析
+		vector<Lexic*> lexicalList = lexicalAnalyzer(fin);
+		//语法分析
+		int pos = 0;
+		Program* program = programBuilder(lexicalList, pos);
+		//翻译成汇编
+		vector<ASM> result;
+		programTrans(result, 0, program);
+		for (int i = 0; i < result.size(); i++)
+			fout << result[i].out() << endl;
+
+		cout << "成功" << endl;
+	}
+	catch (char* e)
+	{
+		cout << e << endl;
+	}
+
 	fin.close();
+	fout.close();
 	return 0;
 }
-/**/ 
-
-
-//Debug for lexical matching
-/*
-int main()
-{
-	MatchMap theMap=mapBuild();
-	while(1)
-	{
-		string ori;
-		cin>>ori; 
-		cout<<"ori_length = "<<ori.length()<<endl;
-		Lexic* out=Matching(ori,theMap);
-		LexicOut(out);
-		delete out;
-	}
-}
-/**/

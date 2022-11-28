@@ -102,6 +102,7 @@ void valueBuilder(DefPara, BlockSentence* father, Program* root, bool isGlobal)
 	if (target[pos]->type != CONST_VAL)throw exceptions::ILLEGAL_INIT_VALUE;
 	value->value = getConstValue(target[pos])->value;
 	//分号检测
+	pos++;
 	if (checkSymbol(target[pos], END) == false)throw exceptions::MISSING_SENICOLON;
 	pos++;
 	//添加到定义中

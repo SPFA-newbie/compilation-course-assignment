@@ -1,26 +1,13 @@
-int abs(int x)
+var int a=1;
+
+int neg(int x)
 {
-	if x>=0 then
-		return x;
-	else
-		return $(x);
+	x=$(x);
+	return x;
 }
 
-var int count=1;
-const int MAX=100;
-
 {
-	var int a=0;
-	var int i=0;
-	for(i==MAX;i=i+1;)
-	{
-		if i%2==1 then
-			a=a-i;
-		else
-			a=a-count;
-		
-		a=abs(a)+$(count);
-		while(count<MAX)
-			count=abs(count+a);
-	}
+	var int b=2;
+	var int res=0;
+	res=a+neg(b)+1;
 }
